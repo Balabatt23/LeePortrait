@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListBarangController;
+use App\Http\Controllers\ListItemController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -29,3 +32,8 @@ Route::prefix('admin')->group(function() {
 //    return view('list_barang', compact('id', 'name'));
 //});
 Route::get('/listbarang/{id}/{name}', [ListBarangController::class, 'tampilkan']);
+Route::get('/listitem', [ListItemController::class, 'listItem']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::controller(AuthController::class )->group(function(){
+    Route::get('/register', 'register')->name('register');
+});
